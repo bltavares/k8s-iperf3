@@ -25,11 +25,11 @@ Waiting for iperf server to start...
 ...... done
 
 ------------------------------------------------------------
-Server listening on TCP port 5001
+Server listening on TCP port 5201
 TCP window size: 85.3 KByte (default)
 ------------------------------------------------------------
-[  4] local 10.233.66.68 port 5001 connected with 10.233.64.59 port 52912
-[  5] local 10.233.66.68 port 5001 connected with 10.233.65.74 port 52236
+[  4] local 10.233.66.68 port 5201 connected with 10.233.64.59 port 52912
+[  5] local 10.233.66.68 port 5201 connected with 10.233.65.74 port 52236
 [ ID] Interval       Transfer     Bandwidth
 [  4]  0.0-10.0 sec  2.98 GBytes  2.55 Gbits/sec
 [  5]  0.0-10.0 sec  2.87 GBytes  2.47 Gbits/sec
