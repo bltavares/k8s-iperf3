@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: iperf-server
-        node: {NODE}
+        node: ${NODE}
     spec:
       affinity:
         nodeAffinity:
@@ -24,7 +24,7 @@ spec:
               - key: kubernetes.io/hostname
                 operator: In
                 values:
-                - {NODE}
+                - ${NODE}
       tolerations:
         - key: node-role.kubernetes.io/master
           operator: Exists
@@ -77,7 +77,7 @@ spec:
               - key: kubernetes.io/hostname
                 operator: NotIn
                 values:
-                - {NODE}
+                - ${NODE}
       tolerations:
         - key: node-role.kubernetes.io/master
           operator: Exists
