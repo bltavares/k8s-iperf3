@@ -7,11 +7,19 @@ function print_usage() {
     >&2 echo "Usage: `basename $0` <Server Node> [iperf options]"
 }
 
+
+cleanup() {
+    echo "[Cleanup]"
+    kubectl delete --cascade -f ${DIR}/k8s-iperf.yaml
+}
+
 if [[ $# < 1 ]]; then 
     print_usage
     exit 1
 fi
 SERVER_NODE=$1; shift
+
+trap cleanup SIGINT SIGTERM
 
 if [[ ! $(kubectl get node -o name | grep "node/${SERVER_NODE}") ]]; then
     >&2 echo "[Error] Node ${SERVER_NODE} not found"
@@ -54,5 +62,4 @@ sleep 5
 kubectl logs -l app=iperf-server 
 echo
 
-echo "[Cleanup]"
-kubectl delete --cascade -f ${DIR}/k8s-iperf.yaml
+cleanup
