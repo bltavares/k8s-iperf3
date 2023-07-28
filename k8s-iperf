@@ -45,16 +45,11 @@ done
 
 for POD in ${CLIENTS}; do
     echo "[Run] iperf-client pod ${POD}"
-    kubectl exec ${POD} -- iperf3 -c iperf-server $@ &> /dev/null &
-done
-
-until [[ $(jobs | grep -v Running) != "" ]]; do
-    printf "."
-    sleep 2
+    kubectl exec ${POD} -- iperf3 -c iperf-server $@
 done
 printf " done\n"
 
-echo
+echo "[iperf-server] Fetching logs"
 sleep 5
 kubectl logs -l app=iperf-server 
 echo
